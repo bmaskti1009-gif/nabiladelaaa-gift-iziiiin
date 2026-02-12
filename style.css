@@ -22,6 +22,11 @@ body {
     transition: background-image 1s ease-in-out;
 }
 
+.content-wrapper {
+    position: relative;
+    z-index: 10; /* Memastikan elemen di atas background */
+}
+
 .card {
     background: rgba(255, 192, 203, 0.4); 
     backdrop-filter: blur(12px);
@@ -64,9 +69,11 @@ button {
     cursor: pointer;
     transition: 0.3s;
     box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+    z-index: 20; /* Tombol paling depan agar bisa diklik */
+    pointer-events: auto;
 }
 
-/* Animasi Tombol Bergerak */
+/* Animasi Tombol No Loncat */
 @keyframes loncatLucu {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px) rotate(5deg); }
@@ -80,7 +87,7 @@ button {
 }
 
 #noBtn:hover {
-    animation: none; /* Berhenti loncat saat mau dikejar/kabur */
+    animation: none;
 }
 
 .heart-fall {
