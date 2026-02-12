@@ -7,32 +7,29 @@ const noBtn = document.getElementById("noBtn");
 const bgGif = document.getElementById("background-gif");
 const music = document.getElementById("bgMusic");
 
-// Fungsi Tombol Lanjut
+// Fungsi navigasi manual
 window.tahapBerikutnya = function() {
     // Putar musik saat klik pertama
     if (music && music.paused) {
-        music.play().catch(e => console.log("Audio play blocked"));
+        music.play().catch(e => console.log("Musik butuh interaksi"));
     }
 
     tahap++;
 
     if (tahap === 2) {
-        mainText.innerHTML = "Sebenarnya kak, gue mau ngajak lu jalan atau ngopi lucu ajaa nanti hari sabtu kalo lu mau";
-        subText.innerHTML = "Soalnya hati lu susah banget di luluhin dan gue rasa gue punya sesuatu buat luluhin hati lu";
-        nextBtn.innerHTML = "apaa?";
+        mainText.innerHTML = "Sebenernya lumayan susah si buat luluhin hati seorang nabila dela satu ini";
+        subText.innerHTML = "Gue rasa gue mau ajak lu jalan atau sekedar ngopi lucu kalcer aja si";
+        nextBtn.innerHTML = "Terus? 🥺";
     } 
     else if (tahap === 3) {
-        // GIF Pertanyaan Utama
         bgGif.style.backgroundImage = "url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3eXp4eXp4eXp4eXp4eXp4eXp4eXp4eXp4eXp4eXp4&ep=v1_gifs_search&rid=giphy.gif&ct=g')";
-        
-        mainText.innerHTML = "karena nanti hari sabtu valentine, dan valentine itu bukan budaya kita?";
-        subText.innerHTML = "gimana klo nnti ga gue kasih fresh flower? gantinya fresh kangkung lumayan kak buat dimakan enak mehehehe";
-        
+        mainText.innerHTML = "Berhubung bentar lagi valentine, dan itu bukan budaya kita, mau ga fresh flower nya di ganti jadi fresh kangkung?";
+        subText.innerHTML = "Lu mau nggak jalan bareng sabtu nanti? atau sekedar ngopi lucu gitu";
         nextBtn.style.display = "none";
         yesBtn.style.display = "inline-block";
         noBtn.style.display = "inline-block";
     }
-}
+};
 
 // Tombol Enggak Kabur
 noBtn.addEventListener("mouseover", () => {
@@ -43,17 +40,13 @@ noBtn.addEventListener("mouseover", () => {
     noBtn.style.top = `${y}px`;
 });
 
-// Tombol Mau Diklik
+// Tombol Mau
 yesBtn.addEventListener("click", () => {
-    // GANTI KE GIF KUCING DANCE PILIHANMU
     bgGif.style.backgroundImage = "url('https://media.giphy.com/media/Y39pGbofrbvN9TzcDC/giphy.gif')";
-    
     mainText.innerHTML = "Yeeayy! 😍";
-    subText.innerHTML = "Terimakasih telah membaca silahkan tinggalkan pesan di DM";
-    
+    subText.innerHTML = "Terimakasih, Silahkan Tinggalkan Pesan";
     yesBtn.style.display = "none";
     noBtn.style.display = "none";
-    
     setInterval(createHeart, 300);
 });
 
@@ -62,6 +55,7 @@ function createHeart() {
     heart.innerHTML = "💖";
     heart.className = "heart-fall";
     heart.style.left = Math.random() * 100 + "vw";
+    heart.style.top = "-5vh";
     heart.style.fontSize = Math.random() * 20 + 10 + "px";
     heart.style.animationDuration = Math.random() * 2 + 3 + "s";
     document.body.appendChild(heart);
