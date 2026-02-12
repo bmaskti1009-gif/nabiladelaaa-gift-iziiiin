@@ -1,11 +1,13 @@
 body {
     margin: 0;
+    padding: 0;
     overflow: hidden;
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: #ffdeeb;
 }
 
 .full-screen-gif {
@@ -17,84 +19,52 @@ body {
     background-image: url('https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif'); 
     background-size: cover;
     background-position: center;
-    z-index: -1;
+    z-index: 1; /* Di paling belakang */
     filter: brightness(0.6);
-    transition: background-image 1s ease-in-out;
 }
 
 .content-wrapper {
     position: relative;
-    z-index: 10; /* Memastikan elemen di atas background */
+    z-index: 10; /* Maju ke depan agar bisa diklik */
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .card {
-    background: rgba(255, 192, 203, 0.4); 
-    backdrop-filter: blur(12px);
+    background: rgba(255, 192, 203, 0.5); 
+    backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 30px;
-    padding: 40px;
+    padding: 30px;
     text-align: center;
-    max-width: 400px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-}
-
-h1 {
-    font-family: 'Dancing Script', cursive;
-    font-size: 2.8rem;
-    color: #fff;
-    margin: 0;
-}
-
-.sub-text {
-    font-size: 1.1rem;
-    color: #fff;
-    margin-top: 20px;
-    min-height: 60px;
-}
-
-.buttons {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
+    width: 85%;
+    max-width: 380px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
 }
 
 button {
     background-color: #ff69b4;
     color: white;
     border: none;
-    padding: 12px 25px;
+    padding: 12px 20px;
     border-radius: 50px;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
-    z-index: 20; /* Tombol paling depan agar bisa diklik */
-    pointer-events: auto;
-}
-
-/* Animasi Tombol No Loncat */
-@keyframes loncatLucu {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px) rotate(5deg); }
+    position: relative;
+    z-index: 100; /* Paling depan */
+    pointer-events: auto; /* Memastikan bisa menerima klik */
 }
 
 #noBtn {
     background-color: #fff;
     color: #ff69b4;
-    position: relative;
-    animation: loncatLucu 0.6s infinite;
-}
-
-#noBtn:hover {
-    animation: none;
 }
 
 .heart-fall {
     position: absolute;
-    top: -10%;
+    pointer-events: none;
     animation: fall linear forwards;
-    z-index: 1000;
 }
 
 @keyframes fall {
